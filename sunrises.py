@@ -2,7 +2,7 @@
 # The derivative of the sunset times gives you the number 
 # of minutes more per day available.
 
-# nice example code i stole:
+# nice example code i learned from:
 # http://datadebrief.blogspot.com/2010/10/plotting-sunrise-sunset-times-in-python.html
 
 import ephem
@@ -70,6 +70,7 @@ plt.close()
 
 
 
+
 plt.figure()
 plt.plot_date(dates,sunrise,'r-')
 plt.plot_date(dates,sunset,'b-')
@@ -80,3 +81,23 @@ plt.title('SEATTLE')
 plt.savefig('riseset_time.png',dpi=250)
 plt.close()
 
+
+
+mo = ['Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','Jan']
+
+timenames = ['Midnight', '2:00 AM', '4:00 AM','6:00 AM', '8:00 AM', '10:00 AM', 
+             'Noon','2:00 PM', '4:00 PM','6:00 PM', '8:00 PM', '10:00 PM']
+timepoints = np.arange(0,24,2)
+
+plt.figure()
+plt.plot_date(dates,sunrise,'b-')
+plt.plot_date(dates,sunset,'r-')
+plt.xticks(tmp[0], mo)
+#plt.ylabel('Time')
+plt.ylim(24,0)
+plt.yticks(timepoints,timenames)
+plt.text(tmp[0][0],5.5,'sunrise',color='blue')
+plt.text(tmp[0][0],20,'sunset',color='red')
+plt.title('Seattle, WA')
+plt.savefig('riseset_time2.png',dpi=250)
+plt.close()
